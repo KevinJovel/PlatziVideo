@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
@@ -17,13 +17,24 @@ const APP = () => {
       <Header />
       <Search />
       {initialState.mylist.length > 0 && (
-        <Categories title='My list'>
+        <Categories title='My List'>
           <Carousel>
-            <CarouselItem />
+            {
+              // eslint-disable-next-line react/jsx-props-no-spreading
+              initialState.mylist.map((item) => <CarouselItem key={item.id} {...item} />)
+            }
           </Carousel>
         </Categories>
       )}
       <Categories title='Tendencias'>
+        <Carousel>
+          {
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            initialState.originals.map((item) => <CarouselItem key={item.id} {...item} />)
+          }
+        </Carousel>
+      </Categories>
+      <Categories title='Originales'>
         <Carousel>
           {
             // eslint-disable-next-line react/jsx-props-no-spreading
