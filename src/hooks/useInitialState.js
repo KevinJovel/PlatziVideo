@@ -8,6 +8,7 @@ const useInitialState = (API) => {
       .then((data) => setVideos(data))
       .catch((error) => console.log(error));
   }, []);
+  console.log(videos);
   return videos;
 };
 
