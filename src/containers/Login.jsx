@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginRequest } from '../actions';
 import Header from '../components/Header';
+import { loginRequest } from '../actions';
+// import Header from '../components/Header';
 import googleIcon from '../assets/static/google-icon.png';
 import twitterIcon from '../assets/static/twitter-icon.png';
 
@@ -28,7 +29,7 @@ const Login = (props) => {
 
   return (
     <>
-      {/* <Header setColor='green' /> */}
+      <Header isLogin />
       <section className='login'>
         <section className='login__container'>
           <h2>Inicia sesión</h2>
