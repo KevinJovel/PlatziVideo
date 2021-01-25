@@ -5,13 +5,15 @@ import { createStore, compose } from 'redux';
 import { Router } from 'react-router';
 import { createBrowserHistory } from 'history';
 import reducer from './reducers';
-import initalState from './initalState';
 import APP from './routes/App';
 
 const history = createBrowserHistory();
+const preloadedState = window.__PRELOADED_STATE__;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, initalState, composeEnhancers());
-ReactDOM.render(
+const store = createStore(reducer, preloadedState, composeEnhancers());
+delete window.__PRELOADED_STATE__;
+
+ReactDOM.hydrate(
   <Provider store={store}>
     <Router history={history}>
       <APP />
